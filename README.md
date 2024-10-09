@@ -1,103 +1,111 @@
-# Github_Data_Dive_Guvi
 1. Introduction
-The GitHub Repository Explorer is an interactive web application developed using Streamlit. The app enables users to explore a dataset of GitHub repositories provided in the file repo_data.csv. It allows filtering based on programming language, activity level, and topics, and includes a suite of visualizations to provide insights into repository characteristics such as stars, forks, open issues, and more.
+The GitHub Repository Explorer is an interactive web application built with Streamlit. It allows users to explore and analyze a curated dataset of GitHub repositories, focusing on various metrics like stars, forks, programming languages, and more. Users can filter repositories by topics, programming languages, and activity levels, and visualize these insights through dynamic charts and graphs.
 
-2. Methodology
-This section outlines the methodology used to process the dataset and develop the web application.
+2. Project Methodology
+The project follows a systematic approach that includes data collection, cleaning, storage, and visualization, culminating in the creation of an interactive web application.
 
-2.1 Data Collection
-The dataset (repo_data.csv) contains key information on GitHub repositories:
+2.1 Data Collection from GitHub Repositories
+The data was gathered from GitHub using their API:
 
-Repository Name
-Owner
-Description
-URL
-Programming Language
-Creation Date
-Last Updated Date
-Number of Stars
-Number of Forks
-Number of Open Issues
-License Type
+GitHub API Access:
+
+A GitHub Personal Access Token was created to authenticate API requests.
+Selected trending topics, such as Machine Learning, Data Science, Artificial Intelligence, etc.
+Data Collection:
+
+For each topic, repositories were fetched using the GitHub API.
+Extracted key information like:
+Repository Name: The name of the repository.
+Owner: The repository owner's username.
+Description: A brief summary of the repository.
+URL: The direct link to the repository on GitHub.
+Programming Language: The primary language used in the repository.
+Creation Date: The date when the repository was created.
+Last Updated Date: The last time the repository was updated.
+Number of Stars: Stars received, indicating popularity.
+Number of Forks: Number of times the repository was forked.
+Number of Open Issues: Current open issues in the repository.
+License Type: The repository's licensing terms.
 2.2 Data Cleaning
-The dataset is processed to ensure data quality:
+The collected dataset was cleaned to ensure accuracy:
 
-Handling Missing Values: Rows with missing values were removed or handled as needed.
-Removing Redundant Columns: Non-relevant columns like 'Unnamed: 0' (an index column) were dropped.
-2.3 Data Transformation
-For better interaction and visualization:
+Handling Missing Data:
 
-Dates: Converted fields like Creation_Date and Last_Updated_Date to a datetime format.
-Numerical Validation: Verified numeric columns like Number_of_Stars, Number_of_Forks, and Number_of_Open_Issues for consistency.
-2.4 Visualizations and Interaction
-Interactive visualizations were created using Streamlit and Plotly:
+Removed repositories with missing key information.
+Ensured all numeric values and dates were properly formatted.
+Data Consistency:
 
-Bar Charts: Top repositories by stars, forks, and open issues.
-Scatter Plot: Comparison of stars and forks across repositories.
-Correlation Heatmap: Displays correlations between activity metrics such as stars, forks, and open issues.
-Pairplot: Shows relationships between metrics like stars, forks, and open issues for further exploration.
-The application allows users to filter data by programming language, activity level, and repository topics, dynamically updating the visualizations based on these filters.
+Corrected any inconsistencies in column types (e.g., converting strings to dates).
+2.3 Storing Data
+The cleaned data was saved in a CSV file for ease of use, named Non_Nan_Repo.csv.
 
+2.4 Building the Streamlit Application
+The Streamlit application was developed to allow users to explore, filter, and visualize the dataset interactively.
+
+Loading Data:
+
+The cleaned dataset is loaded into the application for display and analysis.
+Interactive Filtering:
+
+Filter by Programming Language: Users can select repositories written in specific languages.
+Filter by Activity Level: Sliders allow filtering by stars, forks, or open issues.
+Search by Topic: Users can search repositories by entering relevant keywords or repository names.
+Detailed Visualizations:
+
+Bar Charts: Display top repositories by stars, forks, or issues.
+Scatter Plots: Show relationships between stars and forks.
+Correlation Heatmaps: Explore correlations between repository metrics.
+Pairplots: Visualize distributions and relationships between numeric variables.
+Additional Features:
+
+Users can download the filtered dataset as a CSV file for offline analysis.
+Interactive charts allow users to zoom in and explore data points in more detail.
 3. Application Instructions
 3.1 Prerequisites
-Ensure you have the following installed:
+Ensure the following are installed:
 
-Python (3.7+)
-Required libraries:
+Python: Version 3.7 or higher.
+Required Libraries:
 bash
 Copy code
-pip install streamlit pandas plotly seaborn matplotlib
+pip install streamlit pandas plotly seaborn matplotlib mysql-connector-python
 3.2 Running the Application
-Clone the repository or download the project files.
-Open the terminal in the directory where app.py is located.
-Run the following command to start the application:
+Clone the Project Repository:
+
+Download the project files from the GitHub repository.
+Run the Streamlit Application:
+
+Navigate to the project directory and run:
 bash
 Copy code
 streamlit run app.py
-The application will launch in your default web browser at http://localhost:8501/.
+Access the Application:
+
+Open your browser and visit the URL shown in the terminal, typically http://localhost:8501.
 3.3 Using the Application
-The application offers several interactive sections:
+Apply Filters:
 
-Filter Repositories:
+Use the sidebar to filter by programming language, stars, forks, or open issues.
+Search for repositories by name or keywords in the search box.
+Visualize Data:
 
-Filter repositories by selecting a programming language or viewing all languages.
-Use sliders to filter based on stars, forks, and open issues.
-Search for a repository by name or topic.
-Filtered Repositories:
+Explore bar charts, scatter plots, and heatmaps.
+Hover over data points for more details.
+Download Data:
 
-Displays a list of repositories matching your filters with key metrics such as stars, forks, and open issues.
-Download Filtered Data:
-
-A button is available to download the filtered dataset as a CSV file.
-Visualizations:
-
-Choose between various chart types:
-Top Repositories by Stars
-Top Repositories by Forks
-Top Repositories by Open Issues
-Correlation Heatmap: View correlations between key metrics.
-Stars vs Forks Scatter Plot: Shows the relationship between stars and forks, color-coded by programming language.
-Pairplot: Visualizes relationships between multiple activity metrics.
-
-
+Download the filtered dataset by clicking the "Download CSV" button.
 4. Key Findings
-Using the GitHub Repository Explorer, we uncovered several interesting trends:
+The analysis of the GitHub repository data revealed several key insights:
 
-4.1 Repository Activity Levels
-Repositories vary widely in terms of stars, forks, and open issues.
-A positive correlation exists between stars and forks, indicating popular repositories often have more community contributions.
-4.2 Programming Language Distribution
-Languages like JavaScript, Python, and Java dominate the dataset.
-Python repositories tend to have more forks, indicating higher community engagement.
-4.3 Stars and Forks Relationship
-A strong positive correlation between stars and forks was observed, confirming that as repositories gain more stars, they often receive more forks.
-4.4 Open Issues
-Repositories with a high number of open issues might indicate either significant community interaction or maintenance backlogs.
-4.5 License Types
-A large number of repositories were missing a license, which could be a deterrent for potential contributors
-
-
+4.1 Popular Programming Languages
+Python and JavaScript dominate the landscape, especially in data science and machine learning repositories.
+These languages are associated with the highest number of stars and forks, reflecting their widespread use and popularity.
+4.2 Repository Activity Levels
+A positive correlation exists between stars and forks, meaning that repositories with more stars tend to attract more contributions.
+Repositories with many open issues suggest active development, though they may also indicate maintenance challenges.
+4.3 Licensing Trends
+A significant number of repositories lack a specified license, which could discourage potential contributors or users due to legal uncertainties.
+4.4 Trending Topics
+Topics like Machine Learning, Deep Learning, and Artificial Intelligence consistently appear at the top, reflecting strong interest in these areas.
 5. Conclusion
-The GitHub Repository Explorer offers a powerful tool for developers and open-source enthusiasts to analyze the characteristics and activity levels of various repositories. By allowing users to filter, visualize, and interact with the dataset from repo_data.csv, the application delivers valuable insights into repository health, community engagement, and programming language trends.
-
-
+The GitHub Repository Explorer provides users with a robust tool for exploring and analyzing GitHub repositories in the data science field. The combination of interactive filtering and detailed visualizations makes it easier to understand key trends and insights in the open-source ecosystem. The modular design allows for easy updates, making the tool adaptable to future needs.
