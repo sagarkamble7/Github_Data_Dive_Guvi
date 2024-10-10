@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 # Load the dataset
 @st.cache_data
 def load_data():
-    df = pd.read_csv(r'C:\Users\sagar\Desktop\GIT_REPO_PROJECT\repo_data.csv')
+    df = pd.read_csv('repo_data.csv')
     df.drop(columns=['Unnamed: 0'], inplace=True)  # Drop unnecessary columns
     return df
 
